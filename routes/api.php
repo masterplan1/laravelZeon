@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\ConditionController;
 use App\Http\Controllers\API\FrequencyController;
 use App\Http\Controllers\API\ProviderController;
 use App\Http\Controllers\API\StationController;
@@ -34,6 +35,8 @@ Route::get('/provider-contacts/{provider}', [ProviderController::class, 'index']
 
 Route::get('/sfn-list/{frequency}/{number}', [FrequencyController::class, 'sfnList']);
 
+Route::get('/equipments/{station}', [ConditionController::class, 'equipment']);
+
 Route::group([
 
         'middleware' => 'api',
@@ -47,3 +50,11 @@ Route::group([
         Route::get('user', [AuthController::class, 'user']);
         Route::post('register', [RegisterController::class, 'register']);
 });
+
+Route::post('/create-note', [ConditionController::class, 'create']);
+Route::post('/delete-note', [ConditionController::class, 'delete']);
+Route::post('/edit-note', [ConditionController::class, 'edit']);
+Route::get('/export', [ConditionController::class, 'export']);
+
+
+Route::get('/email-equips', [ConditionController::class, 'sendEquipsEmail']);

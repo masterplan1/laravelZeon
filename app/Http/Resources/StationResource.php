@@ -14,6 +14,7 @@ class StationResource extends JsonResource
      */
     public function toArray($request)
     {
+        // return $this->getMx2Frequency;
         return [
             'id' => $this->id,
             'name' => $this->gerNumberAndName(),
@@ -24,9 +25,9 @@ class StationResource extends JsonResource
             'params' => $this->params,
             'provider_id' => $this->provider_id,
             'mx1_frequency' => [$this->getMx1Frequency[0], 1],
-            'mx2_frequency' => [$this->getMx2Frequency[0], 2],
-            'mx3_frequency' => [$this->getMx3Frequency[0], 3],
-            'mx5_frequency' => [$this->getMx5Frequency[0], 5]
+            'mx2_frequency' => [$this->getMx2Frequency[0] ?? null, 2],
+            'mx3_frequency' => [$this->getMx3Frequency[0] ?? null, 3],
+            'mx5_frequency' => [$this->getMx5Frequency[0] ?? null, 5]
         ];
     }
 }

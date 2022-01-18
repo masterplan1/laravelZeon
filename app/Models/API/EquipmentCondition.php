@@ -5,13 +5,7 @@ namespace App\Models\API;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class District extends Model
+class EquipmentCondition extends Model
 {
     use HasFactory;
-
-    public $timestamps = false;
-
-    public function stations(){
-        return $this->hasMany(Station::class);
-    }
 }

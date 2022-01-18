@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\ConditionController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -24,5 +25,9 @@ if(User::where('admin', 1)->exists()){
 }else{
     Auth::routes();
 }
-Auth::routes();
+// Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('conditions/export', [ConditionController::class, 'export']);
+
+
