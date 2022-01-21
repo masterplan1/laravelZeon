@@ -50,10 +50,6 @@ class ConditionExport implements FromView, WithEvents
     {
         $districts = District::with('stations.params', 'stations.equipments')->get();
 
-        // dd($this->prepareData($districts));
-
-
-
         return view('exports.stations', [
             'stations' => $this->prepareData($districts)
         ]);
@@ -68,6 +64,7 @@ class ConditionExport implements FromView, WithEvents
                 $result[] = [
                     'number' => $station->number,
                     'name' => $station->name,
+                    'mx1_only' => $station->params->only_mx1 ?? 0, //
                     'power' => $station->params->power ?? 0,
                     'sat1' => $station->equipments->sat1 ?? null,
                     'sat2' => $station->equipments->sat2 ?? null,

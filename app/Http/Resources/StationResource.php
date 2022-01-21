@@ -24,6 +24,7 @@ class StationResource extends JsonResource
             'region' => $this->region(),
             'params' => $this->params,
             'provider_id' => $this->provider_id,
+            'status' => $this->status,
             'mx1_frequency' => [$this->getMx1Frequency[0], 1],
             'mx2_frequency' => [$this->getMx2Frequency[0] ?? null, 2],
             'mx3_frequency' => [$this->getMx3Frequency[0] ?? null, 3],

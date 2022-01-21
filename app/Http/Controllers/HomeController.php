@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\API\EquipmentCondition;
 use App\Models\API\Region;
+use App\Models\API\Station;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -26,8 +28,5 @@ class HomeController extends Controller
     public function index()
     {
         
-        // dd(Region::find(1)->name);
-        $test = Region::find(4)->name;
-        return view('home', compact('test'));
     }
 }

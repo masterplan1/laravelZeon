@@ -57,4 +57,4 @@ Route::post('/edit-note', [ConditionController::class, 'edit']);
 Route::get('/export', [ConditionController::class, 'export']);
 
 
-Route::get('/email-equips', [ConditionController::class, 'sendEquipsEmail']);
+Route::post('/email-equips', [ConditionController::class, 'sendEquipsEmail']);

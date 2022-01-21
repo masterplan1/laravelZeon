@@ -5,6 +5,7 @@
   $bg_yellow = "background:yellow;";
   $bg_blue = "background:lightblue;";
   $bg_l_blue = "background:lightslateblue;";
+  $bg_black = "background:black;";
   // width
   $w30 = "width:25px;";
   $w60 = "width:60px;";
@@ -70,32 +71,32 @@
 
           {{-- content --}}
           <td @if ($station['sat1']) style={{ $bg_yellow.$w30.$a_c.$f_bold }} @else style={{ $bg_blue.$w30.$a_c.$f_bold }} @endif>S</td>
-          <td @if ($station['sat2']) style={{ $bg_yellow.$w30.$a_c.$f_bold }} @else style={{ $bg_l_blue.$w30.$a_c.$f_bold  }} @endif>S</td>
+          <td @if(isset($station['mx1_only']) && $station['mx1_only'] == 1) style={{ $bg_black.$w30 }} @elseif ($station['sat2']) style={{ $bg_yellow.$w30.$a_c.$f_bold }} @else style={{ $bg_l_blue.$w30.$a_c.$f_bold  }} @endif>S</td>
           <td @if ($station['pvr1']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
-          <td @if ($station['pvr2']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
-          <td @if ($station['pvr3']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
-          <td @if ($station['pvr4']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
+          <td @if(isset($station['mx1_only']) && $station['mx1_only'] == 1) style={{ $bg_black.$w30 }} @elseif ($station['pvr2']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
+          <td @if(isset($station['mx1_only']) && $station['mx1_only'] == 1) style={{ $bg_black.$w30 }} @elseif ($station['pvr3']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
+          <td @if(isset($station['mx1_only']) && $station['mx1_only'] == 1) style={{ $bg_black.$w30 }} @elseif ($station['pvr4']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
           <td @if ($station['trans1']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
-          <td @if ($station['trans2']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
-          <td @if ($station['trans3']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
-          <td @if ($station['trans4']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
-          <td @if ($station['mux']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
+          <td @if(isset($station['mx1_only']) && $station['mx1_only'] == 1) style={{ $bg_black.$w30 }} @elseif ($station['trans2']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
+          <td @if(isset($station['mx1_only']) && $station['mx1_only'] == 1) style={{ $bg_black.$w30 }} @elseif ($station['trans3']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
+          <td @if(isset($station['mx1_only']) && $station['mx1_only'] == 1) style={{ $bg_black.$w30 }} @elseif ($station['trans4']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
+          <td @if(isset($station['mx1_only']) && $station['mx1_only'] == 1) style={{ $bg_black.$w30 }} @elseif ($station['mux']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
           <td @if ($station['gps1']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
-          <td @if ($station['gps2']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
+          <td @if(isset($station['mx1_only']) && $station['mx1_only'] == 1) style={{ $bg_black.$w30 }} @elseif ($station['gps2']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
           <td @if ($station['ups']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
           <td @if ($station['temp']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
           <td @if ($station['asa']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
-          <td @if ($station['cisco']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
+          <td @if(isset($station['mx1_only']) && $station['mx1_only'] == 1) style={{ $bg_black.$w30 }} @elseif ($station['cisco']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
           <td @if ($station['console']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
           <td @if ($station['server']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
           <td @if ($station['telescaner']) style={{ $bg_yellow.$w30.$a_c }} @else style={{ $bg_dark_green.$w30.$a_c }} @endif>32</td>
-          <td @if ($station['reg_channel']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
+          <td @if(isset($station['mx1_only']) && $station['mx1_only'] == 1) style={{ $bg_black.$w30 }} @elseif ($station['reg_channel']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
           <td @if ($station['other']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
           <td @if ($station['communication']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
           <td style={{ $w800 }}>
             <?php $num = 1; ?>
             @foreach ($station as $key=>$val)
-              @if (in_array($key, ['number', 'name', 'power']) || !$val)
+              @if (in_array($key, ['number', 'name', 'power', 'mx1_only']) || !$val)
                 <?php continue; ?>
               @else
                 @if ($num != 1) <br> @endif{{ $num.'.'.$val.' ('.App\Exports\ConditionExport::arrName[$key].').'}}

@@ -16,10 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 if(User::where('admin', 1)->exists()){
     Auth::routes(['register' => false, 'reset' => false, 'confirm' => false]);
 }else{
@@ -29,5 +25,7 @@ if(User::where('admin', 1)->exists()){
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('conditions/export', [ConditionController::class, 'export']);
+
+Route::get('/send', [ConditionController::class, 'sendEquipsEmail']);
 
 

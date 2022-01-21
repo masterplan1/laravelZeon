@@ -18,12 +18,9 @@ class ConditionController extends Controller
 {
     public function export() 
     {
-        // return Excel::download(new ConditionExport, 'Стан обладнання.xlsx');
         Excel::store(new ConditionExport, 'Стан обладнання.xlsx');
         return response(Storage::get('Стан обладнання.xlsx'))
             ->header('Content-Type', Storage::mimeType('Стан обладнання.xlsx'));
-            // ->header('Content-disposition','attachment; filename="test"');
-        // return response()->file(storage_path('app\Стан обладнання.xlsx'));
     }
 
     public function equipment(Station $station){
@@ -73,8 +70,11 @@ class ConditionController extends Controller
         return $equipModel->save();
     }
 
-    public function sendEquipsEmail(){
-        Mail::to('masterplan1@ukr.net')->send(new SendMail());
+    public function sendEquipsEmail(Request $request){
+        $user = $request->post('user');
+        Excel::store(new ConditionExport, 'Стан обладнання.xlsx');
+        // Mail::to(['v.prokopenko@zeonbud.com.ua', 'v.gritsyk@zeonbud.com.ua'])->send(new SendMail($user));
+        Mail::to(['masterplan1@ukr.net'])->send(new SendMail($user));
         return true;
     }
 }
