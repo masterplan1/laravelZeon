@@ -46,6 +46,8 @@ class ConditionExport implements FromView, WithEvents
         'communication' => "Зв\'язок"
     ];
 
+    const MX1_ONLY_ITEMS = ['sat1', 'pvr1', 'trans1', 'gps1', 'ups', 'temp', 'asa', 'console', 'server', 'telescaner', 'other', 'communication'];
+
     public function view(): View
     {
         $districts = District::with('stations.params', 'stations.equipments')->get();
@@ -58,13 +60,14 @@ class ConditionExport implements FromView, WithEvents
     protected function prepareData($items){
         $result = [];
         foreach($items as $district){
-            if($district->id == 26) continue;
+            // if($district->id == 26) continue;
             $result[] = ['name' => $district->name, 'district' => true];
             foreach($district->stations as $station){
                 $result[] = [
                     'number' => $station->number,
                     'name' => $station->name,
                     'mx1_only' => $station->params->only_mx1 ?? 0, //
+                    'status' => $station->status ?? 1, // 
                     'power' => $station->params->power ?? 0,
                     'sat1' => $station->equipments->sat1 ?? null,
                     'sat2' => $station->equipments->sat2 ?? null,

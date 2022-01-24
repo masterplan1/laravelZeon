@@ -31,16 +31,9 @@ class SendMail extends Mailable
      */
     public function build()
     {
-        
         // return $this->from('duty@example.com.ua')->view('emails.default', ['user' => $this->user])->subject('Стан обладнання');
-        
-        
         return $this->from('duty.kyiv@zeonbud.com.ua')->view('emails.default', ['user' => $this->user])->subject('Стан обладнання')->attach(storage_path('app/Стан обладнання.xlsx', [
             'mime' => Storage::mimeType('Стан обладнання.xlsx')
         ]));
-
-
-
-        // return $this->markdown('emails.send');
     }
 }

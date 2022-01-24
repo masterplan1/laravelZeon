@@ -1,4 +1,6 @@
 <?php 
+  $nameArr = App\Exports\ConditionExport::arrName;
+  $mx1OnlyNames = App\Exports\ConditionExport::MX1_ONLY_ITEMS;
 // colors
   $bg_green = "background:#5ddd35;";
   $bg_dark_green = "background:#08a731;";
@@ -70,7 +72,25 @@
           <td style={{ $bg_green.$w60.$a_c.$f_bold }}>{{ $station['power'] }}</td>
 
           {{-- content --}}
-          <td @if ($station['sat1']) style={{ $bg_yellow.$w30.$a_c.$f_bold }} @else style={{ $bg_blue.$w30.$a_c.$f_bold }} @endif>S</td>
+          @foreach ($nameArr as $key => $item)
+            @if ($station['status'] == 2)
+              <td style={{ $bg_black.$w30 }}></td>
+            @elseif ((isset($station['mx1_only']) && $station['mx1_only'] == 1) && !in_array($key, $mx1OnlyNames))
+            <td style={{ $bg_black.$w30 }}></td>
+            @elseif (in_array($key, ['sat1', 'sat2']))
+              <td style={{ $station[$key] ? $bg_yellow.$w30.$a_c.$f_bold : $bg_blue.$w30.$a_c.$f_bold }}>S</td>
+            @elseif (in_array($key, ['telescaner']))
+              <td style={{ $station[$key] ? $bg_yellow.$w30.$a_c.$f_bold : $bg_dark_green.$w30.$a_c }}>32</td>
+            @else
+              <td style={{ $station[$key] ? $bg_yellow.$w30.$a_c.$f_bold : $bg_green.$w30 }}></td>
+            @endif
+               {{-- @elseif ($station[$key])
+              <td style={{ $bg_yellow.$w30.$a_c.$f_bold }}></td>
+            @else
+              <td style={{ $bg_green.$w30 }}></td>
+            @endif --}}
+          @endforeach
+          {{-- <td @if ($station['sat1']) style={{ $bg_yellow.$w30.$a_c.$f_bold }} @else style={{ $bg_blue.$w30.$a_c.$f_bold }} @endif>S</td>
           <td @if(isset($station['mx1_only']) && $station['mx1_only'] == 1) style={{ $bg_black.$w30 }} @elseif ($station['sat2']) style={{ $bg_yellow.$w30.$a_c.$f_bold }} @else style={{ $bg_l_blue.$w30.$a_c.$f_bold  }} @endif>S</td>
           <td @if ($station['pvr1']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
           <td @if(isset($station['mx1_only']) && $station['mx1_only'] == 1) style={{ $bg_black.$w30 }} @elseif ($station['pvr2']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
@@ -92,11 +112,11 @@
           <td @if ($station['telescaner']) style={{ $bg_yellow.$w30.$a_c }} @else style={{ $bg_dark_green.$w30.$a_c }} @endif>32</td>
           <td @if(isset($station['mx1_only']) && $station['mx1_only'] == 1) style={{ $bg_black.$w30 }} @elseif ($station['reg_channel']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
           <td @if ($station['other']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
-          <td @if ($station['communication']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td>
+          <td @if ($station['communication']) style={{ $bg_yellow.$w30 }} @else style={{ $bg_green.$w30 }} @endif></td> --}}
           <td style={{ $w800 }}>
             <?php $num = 1; ?>
             @foreach ($station as $key=>$val)
-              @if (in_array($key, ['number', 'name', 'power', 'mx1_only']) || !$val)
+              @if (in_array($key, ['number', 'name', 'power', 'mx1_only', 'status']) || !$val)
                 <?php continue; ?>
               @else
                 @if ($num != 1) <br> @endif{{ $num.'.'.$val.' ('.App\Exports\ConditionExport::arrName[$key].').'}}

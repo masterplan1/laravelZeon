@@ -14,13 +14,13 @@ class StationResource extends JsonResource
      */
     public function toArray($request)
     {
-        // return $this->getMx2Frequency;
+        $second_octet = $this->id != 71 ? $this->district->ip_second_octet : 11;
         return [
             'id' => $this->id,
             'name' => $this->gerNumberAndName(),
             'ip' => $this->base_ip,
             'district' => $this->district->name,
-            'ip_s_octet' => $this->district->ip_second_octet,
+            'ip_s_octet' => $second_octet,
             'region' => $this->region(),
             'params' => $this->params,
             'provider_id' => $this->provider_id,
