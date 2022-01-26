@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -20,4 +20,8 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection --}}
+
+@foreach ($result as $item)
+    {{ $item }} <br>
+@endforeach

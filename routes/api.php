@@ -37,6 +37,10 @@ Route::get('/sfn-list/{frequency}/{number}', [FrequencyController::class, 'sfnLi
 
 Route::get('/equipments/{station}', [ConditionController::class, 'equipment']);
 
+Route::get('/ping/{station}', [StationController::class, 'ping']);
+
+Route::get('/ping-item/{ip}', [StationController::class, 'pingItem']);
+
 Route::group([
 
         'middleware' => 'api',
